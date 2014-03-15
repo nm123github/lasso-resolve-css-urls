@@ -1,6 +1,6 @@
 {
     "name": "raptor-optimizer-resolve-css-urls",
-    "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with the optimized resource",
+    "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
     "keywords": [
         "raptor-optimizer",
         "raptor-optimizer-transform",
