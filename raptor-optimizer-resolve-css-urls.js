@@ -13,7 +13,10 @@ module.exports = {
             var optimizer = context.optimizer;
 
             var output = cssParser.replaceUrls(code, function(url) {
-                return optimizer.resolveResourceUrl(url, context);
+                return optimizer.optimizeResource(url, context)
+                    .then(function(optimizedResource) {
+                        return optimizedResource.url;
+                    });
             }, this);
 
             // NOTE: output could be either the String code or a promise, but we don't care
