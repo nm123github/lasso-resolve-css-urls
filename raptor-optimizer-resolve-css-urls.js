@@ -17,7 +17,7 @@ module.exports = {
                     .then(function(optimizedResource) {
                         return optimizedResource.url;
                     });
-            }, this);
+            });
 
             // NOTE: output could be either the String code or a promise, but we don't care
             return output;
