@@ -9,15 +9,15 @@ module.exports = {
     // false: The transform function will RECEIVE full code and RETURN a value or promise
     stream: false,
 
-    transform: function(code, contentType, optimizerContext) {
+    transform: function(code, contentType, optimizerContext, callback) {
         if (contentType === 'css') {
 
             var optimizer = optimizerContext.optimizer;
 
             // NOTE: output could be either the String code or a promise, but we don't care
             //       replaceUrls returns a promise
-            return cssParser.replaceUrls(code,
-
+            cssParser.replaceUrls(
+                code,
                 // the replacer function
                 function(url, start, end, callback) {
                     optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
@@ -26,9 +26,13 @@ module.exports = {
                         }
                         callback(null, optimizedResource && optimizedResource.url);
                     });
+                }, function(err, code) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(null, code);
                 });
-        }
-        else {
+        } else {
             return code;
         }
     }
