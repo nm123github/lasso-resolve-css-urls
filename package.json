@@ -33,5 +33,5 @@
         "registry": "https://registry.npmjs.org/"
     },
     "main": "raptor-optimizer-resolve-css-urls",
-    "version": "0.1.4-beta"
+    "version": "0.1.5-beta"
 }
