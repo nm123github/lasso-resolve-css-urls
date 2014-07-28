@@ -1,37 +1,37 @@
 {
-    "name": "raptor-optimizer-resolve-css-urls",
-    "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
-    "keywords": [
-        "raptor-optimizer",
-        "raptor-optimizer-transform",
-        "css"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/raptorjs3/raptor-optimizer-resolve-css-urls.git"
-    },
-    "scripts": {
-        "test": "node_modules/.bin/jshint *.js"
-    },
-    "author": "Patrick Steele-Idem <pnidem@gmail.com>",
-    "contributors": [
-        "Patrick Steele-Idem <pnidem@gmail.com>",
-        "Phillip Gates-Idem <phillip.idem@gmail.com>"
-    ],
-    "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
-    "dependencies": {
-        "raptor-css-parser": "^0.2.0-beta"
-    },
-    "devDependencies": {
-        "mocha": "~1.15.1",
-        "chai": "~1.8.1",
-        "jshint": "^2.4.4"
-    },
-    "license": "Apache License v2.0",
-    "bin": {},
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
-    },
-    "main": "raptor-optimizer-resolve-css-urls",
-    "version": "0.1.5-beta"
+  "name": "raptor-optimizer-resolve-css-urls",
+  "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
+  "keywords": [
+    "raptor-optimizer",
+    "raptor-optimizer-transform",
+    "css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raptorjs3/raptor-optimizer-resolve-css-urls.git"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/jshint *.js"
+  },
+  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+  "contributors": [
+    "Patrick Steele-Idem <pnidem@gmail.com>",
+    "Phillip Gates-Idem <phillip.idem@gmail.com>"
+  ],
+  "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
+  "dependencies": {
+    "raptor-css-parser": "^0.2.4-beta"
+  },
+  "devDependencies": {
+    "mocha": "~1.15.1",
+    "chai": "~1.8.1",
+    "jshint": "^2.4.4"
+  },
+  "license": "Apache License v2.0",
+  "bin": {},
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "raptor-optimizer-resolve-css-urls",
+  "version": "0.1.5-beta"
 }
