@@ -22,8 +22,9 @@ module.exports = {
                 function(url, start, end, callback) {
                     optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
                         if (err) {
-                            // TODO: Log error?
+                            throw err;
                         }
+                        
                         callback(null, optimizedResource && optimizedResource.url);
                     });
                 }, function(err, code) {
