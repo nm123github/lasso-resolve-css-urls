@@ -22,9 +22,9 @@ module.exports = {
                 function(url, start, end, callback) {
                     optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
                         if (err) {
-                            throw err;
+                            return callback(err);
                         }
-                        
+
                         callback(null, optimizedResource && optimizedResource.url);
                     });
                 }, function(err, code) {
