@@ -1,7 +1,7 @@
 var cssParser = require('raptor-css-parser');
 
 module.exports = function (pageOptimizer, pluginConfig) {
-    pageOptimizer.config.addTransform({
+    pageOptimizer.addTransform({
         contentType: 'css',
         
         name: module.id,
