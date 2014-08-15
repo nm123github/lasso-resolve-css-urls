@@ -15,8 +15,7 @@ module.exports = function (pageOptimizer, pluginConfig) {
 
                 var optimizer = optimizerContext.optimizer;
 
-                // NOTE: output could be either the String code or a promise, but we don't care
-                //       replaceUrls returns a promise
+                // NOTE: output could be either the String code or a promise
                 cssParser.replaceUrls(
                     code,
                     // the replacer function
