@@ -3,7 +3,7 @@
     "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
     "keywords": [
         "raptor-optimizer",
-        "raptor-optimizer-transform",
+        "raptor-optimizer-plugin",
         "css"
     ],
     "repository": {
