@@ -20,7 +20,7 @@
   ],
   "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
   "dependencies": {
-    "raptor-css-parser": "^0.2.4-beta"
+    "raptor-css-parser": "^1.0.0-beta"
   },
   "devDependencies": {
     "mocha": "~1.15.1",
