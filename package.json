@@ -1,37 +1,37 @@
 {
-  "name": "optimizer-resolve-css-urls",
-  "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
-  "keywords": [
-    "optimizer",
-    "optimizer-plugin",
-    "css"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/raptorjs3/optimizer-resolve-css-urls.git"
-  },
-  "scripts": {
-    "test": "node_modules/.bin/jshint *.js"
-  },
-  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
-  "contributors": [
-    "Patrick Steele-Idem <pnidem@gmail.com>",
-    "Phillip Gates-Idem <phillip.idem@gmail.com>"
-  ],
-  "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
-  "dependencies": {
-    "raptor-css-parser": "^1.0.1"
-  },
-  "devDependencies": {
-    "mocha": "~1.15.1",
-    "chai": "~1.8.1",
-    "jshint": "^2.4.4"
-  },
-  "license": "Apache License v2.0",
-  "bin": {},
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "main": "optimizer-resolve-css-urls-plugin.js",
-  "version": "1.1.1"
+    "name": "optimizer-resolve-css-urls",
+    "description": "Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources",
+    "keywords": [
+        "optimizer",
+        "optimizer-plugin",
+        "css"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/raptorjs3/optimizer-resolve-css-urls.git"
+    },
+    "scripts": {
+        "test": "node_modules/.bin/jshint *.js"
+    },
+    "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+    "contributors": [
+        "Patrick Steele-Idem <pnidem@gmail.com>",
+        "Phillip Gates-Idem <phillip.idem@gmail.com>"
+    ],
+    "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
+    "dependencies": {
+        "raptor-css-parser": "^1.0.1"
+    },
+    "devDependencies": {
+        "mocha": "~1.15.1",
+        "chai": "~1.8.1",
+        "jshint": "^2.4.4"
+    },
+    "license": "Apache License v2.0",
+    "bin": {},
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "main": "optimizer-resolve-css-urls-plugin.js",
+    "version": "1.1.2"
 }
