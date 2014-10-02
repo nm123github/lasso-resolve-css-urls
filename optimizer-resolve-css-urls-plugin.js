@@ -1,4 +1,6 @@
 var cssParser = require('raptor-css-parser');
+var raptorModulesUtil = require('raptor-modules/util');
+var nodePath = require('path');
 
 module.exports = function (pageOptimizer, pluginConfig) {
     pageOptimizer.addTransform({
@@ -20,6 +22,9 @@ module.exports = function (pageOptimizer, pluginConfig) {
                     code,
                     // the replacer function
                     function(url, start, end, callback) {
+                        if (url.charAt(0) === '/') {
+                            url = nodePath.join(raptorModulesUtil.getProjectRootDir(url), url);
+                        }
                         optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
                             if (err) {
                                 return callback(err);
