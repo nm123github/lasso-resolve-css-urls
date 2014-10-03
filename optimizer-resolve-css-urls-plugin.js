@@ -5,7 +5,7 @@ var nodePath = require('path');
 module.exports = function (pageOptimizer, pluginConfig) {
     pageOptimizer.addTransform({
         contentType: 'css',
-        
+
         name: module.id,
 
         // true: The transform function will RECEIVE and RETURN a stream that can be used to read the transformed out
@@ -22,9 +22,10 @@ module.exports = function (pageOptimizer, pluginConfig) {
                     code,
                     // the replacer function
                     function(url, start, end, callback) {
-                        if (url.charAt(0) === '/') {
+                        if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
                             url = nodePath.join(raptorModulesUtil.getProjectRootDir(url), url);
                         }
+                        
                         optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
                             if (err) {
                                 return callback(err);
