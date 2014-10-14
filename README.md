@@ -25,9 +25,8 @@ to resolve URLs that are paths using rules of `require.resolve()`.
 
 
 # Basic Usage
-CSS code 
 
-```css
+```javascript
 var config = {
     resolveCssUrls: true
     ...
