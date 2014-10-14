@@ -48,37 +48,36 @@ module.exports = function (pageOptimizer, pluginConfig) {
         stream: false,
 
         transform: function(code, contentType, optimizerContext, callback) {
-            if (contentType === 'css') {
+            var optimizer = optimizerContext.optimizer;
 
-                var optimizer = optimizerContext.optimizer;
+            // NOTE: output could be either the String code or a promise
+            cssParser.replaceUrls(
+                code,
+                
+                // the replacer function
+                function(url, start, end, callback) {
+                    urlResolver(url, optimizerContext, function(err, url) {
+                        if (err || !url) {
+                            return callback(err);
+                        }
 
-                // NOTE: output could be either the String code or a promise
-                cssParser.replaceUrls(
-                    code,
-                    // the replacer function
-                    function(url, start, end, callback) {
-                        urlResolver(url, optimizerContext, function(err, url) {
-                            if (err || !url) {
+                        optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
+                            if (err) {
                                 return callback(err);
                             }
 
-                            optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
-                                if (err) {
-                                    return callback(err);
-                                }
-
-                                callback(null, optimizedResource && optimizedResource.url);
-                            });
+                            callback(null, optimizedResource && optimizedResource.url);
                         });
-                    }, function(err, code) {
-                        if (err) {
-                            return callback(err);
-                        }
-                        callback(null, code);
                     });
-            } else {
-                return code;
-            }
+                },
+
+                // when everything is done
+                function(err, code) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(null, code);
+                });
         }
     });
 };
