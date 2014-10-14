@@ -13,15 +13,15 @@ For example:
 }
 ```
 
-When CSS URL resolving is enabled, image assets referenced in CSS files will automatically be automatically
+When CSS URL resolving is enabled, image assets referenced in CSS files will automatically
 be copied to the output directory and the URL reference will be replaced with the resultant URL.
-In the example above, the file "myfile.png" will be moved to the output directory and the URL in the CSS
+In the example above, the file `myfile.png` will be moved to the output directory and the URL in the CSS
 file will be adjusted accordingly.
 
-Resource URLs that begin with "data:", "//", "http://", and "https://" are ignored during URL resolving.
+Resource URLs that begin with `data:`, `//`, `http://`, and `https://` are ignored during URL resolving.
 
 In the typical use case, relative URLs are resolved relative to the source file. However, it is also possible
-to resolve URLs that are paths using rules of require.resolve.
+to resolve URLs that are paths using rules of `require.resolve()`.
 
 
 # Basic Usage
@@ -57,9 +57,9 @@ Consider this CSS snippet:
 }
 ```
 
-In this example, the actual path to "assets-module/images/myfile.png" will
+In this example, the actual path to `assets-module/images/myfile.png` will
 be resolved using the rules of require.resolve(). If the target is relative
-(e.g. "./myfile.png"), the path will resolved relative to the source file.
+(e.g. `./myfile.png`), the path will resolved relative to the source file.
 
 # Base64 Encoding of images
 Consider this CSS snippet:
