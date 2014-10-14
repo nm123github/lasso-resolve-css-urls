@@ -47,6 +47,9 @@ var config = {
     }
     ...
 };
+
+var pageOptimizer = optimizer.create(config);
+pageOptimizer.optimizePage(...);
 ```
 # Using require.resolve
 Consider this CSS snippet:
