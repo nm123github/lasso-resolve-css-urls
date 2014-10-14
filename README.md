@@ -58,8 +58,10 @@ Consider this CSS snippet:
 ```
 
 In this example, the actual path to `assets-module/images/myfile.png` will
-be resolved using the rules of require.resolve(). If the target is relative
-(e.g. `./myfile.png`), the path will resolved relative to the source file.
+be resolved using the rules of `require.resolve()`.
+The path will resolved relative to the source file.
+Therefore, if the target is relative (e.g. `./myfile.png`), then the target will be
+resolved relative to the source file.
 
 # Base64 Encoding of images
 Consider this CSS snippet:
