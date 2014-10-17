@@ -47,13 +47,13 @@ module.exports = function (pageOptimizer, pluginConfig) {
         // false: The transform function will RECEIVE full code and RETURN a value or promise
         stream: false,
 
-        transform: function(code, contentType, optimizerContext, callback) {
+        transform: function(code, optimizerContext, callback) {
             var optimizer = optimizerContext.optimizer;
 
             // NOTE: output could be either the String code or a promise
             cssParser.replaceUrls(
                 code,
-                
+
                 // the replacer function
                 function(url, start, end, callback) {
                     urlResolver(url, optimizerContext, function(err, url) {
