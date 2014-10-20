@@ -59,7 +59,7 @@ module.exports = function (pageOptimizer, pluginConfig) {
                             return callback(err);
                         }
 
-                        optimizer.optimizeResource(url, optimizerContext, function(err, optimizedResource) {
+                        optimizer.optimizeResource(url, {optimizerContext: optimizerContext}, function(err, optimizedResource) {
                             if (err) {
                                 return callback(err);
                             }
