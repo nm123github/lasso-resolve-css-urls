@@ -49,8 +49,6 @@ module.exports = function (pageOptimizer, pluginConfig) {
 
         transform: function(code, optimizerContext, callback) {
             var optimizer = optimizerContext.optimizer;
-
-            // NOTE: output could be either the String code or a promise
             cssParser.replaceUrls(
                 code,
 
