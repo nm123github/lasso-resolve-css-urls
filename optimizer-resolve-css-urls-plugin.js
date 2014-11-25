@@ -8,7 +8,7 @@ function defaultUrlResolver(url, optimizerContext, callback) {
     if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
         url = nodePath.join(raptorModulesUtil.getProjectRootDir(url), url);
     } else if (url.startsWith(REQUIRE_PREFIX)) {
-        url = url.substring(REQUIRE_PREFIX.length);
+        url = url.substring(REQUIRE_PREFIX.length).trim();
 
         var from;
         if (optimizerContext.dependency) {
