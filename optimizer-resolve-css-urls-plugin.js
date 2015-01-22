@@ -48,6 +48,11 @@ module.exports = function (pageOptimizer, pluginConfig) {
         stream: false,
 
         transform: function(code, optimizerContext, callback) {
+            var dependency = optimizerContext.dependency;
+            if (dependency && dependency.resolveCssUrlsEnabled === false) {
+                return callback(null, code);
+            }
+
             var optimizer = optimizerContext.optimizer;
             cssParser.replaceUrls(
                 code,
