@@ -1,7 +1,7 @@
 lasso-resolve-css-urls
 ==========================
 
-Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources
+Transform for the Lasso.js to replace URLs in CSS files with optimized resources
 
 # Overview
 CSS files (which might be derived from LESS or SASS resources) often contain references to other assets.
