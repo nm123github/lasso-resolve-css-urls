@@ -1,4 +1,4 @@
-optimizer-resolve-css-urls
+lasso-resolve-css-urls
 ==========================
 
 Transform for the RaptorJS Optimizer to replace URLs in CSS files with optimized resources
@@ -32,7 +32,7 @@ var config = {
     ...
 };
 
-var pageOptimizer = optimizer.create(config);
+var pageOptimizer = lasso.create(config);
 pageOptimizer.optimizePage(...);
 ```
 
@@ -40,7 +40,7 @@ pageOptimizer.optimizePage(...);
 ```javascript
 var config = {
     resolveCssUrls: {
-      urlResolver: function(url, optimizerContext, callback) {
+      urlResolver: function(url, lassoContext, callback) {
         url = url.replace('SOME_TOKEN', 'something else');
         callback(null, url);
       }
@@ -48,7 +48,7 @@ var config = {
     ...
 };
 
-var pageOptimizer = optimizer.create(config);
+var pageOptimizer = lasso.create(config);
 pageOptimizer.optimizePage(...);
 ```
 # Using require.resolve

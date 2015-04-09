@@ -4,15 +4,15 @@ var resolver = require('raptor-modules/resolver');
 var nodePath = require('path');
 var REQUIRE_PREFIX = 'require:';
 
-function defaultUrlResolver(url, optimizerContext, callback) {
+function defaultUrlResolver(url, lassoContext, callback) {
     if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
         url = nodePath.join(raptorModulesUtil.getProjectRootDir(url), url);
     } else if (url.startsWith(REQUIRE_PREFIX)) {
         url = url.substring(REQUIRE_PREFIX.length).trim();
 
         var from;
-        if (optimizerContext.dependency) {
-            from = optimizerContext.dependency.getDir(optimizerContext);
+        if (lassoContext.dependency) {
+            from = lassoContext.dependency.getDir(lassoContext);
         } else {
             from = raptorModulesUtil.getProjectRootDir(url);
         }
@@ -47,24 +47,24 @@ module.exports = function (pageOptimizer, pluginConfig) {
         // false: The transform function will RECEIVE full code and RETURN a value or promise
         stream: false,
 
-        transform: function(code, optimizerContext, callback) {
-            var dependency = optimizerContext.dependency;
+        transform: function(code, lassoContext, callback) {
+            var dependency = lassoContext.dependency;
             if (dependency && dependency.resolveCssUrlsEnabled === false) {
                 return callback(null, code);
             }
 
-            var optimizer = optimizerContext.optimizer;
+            var lasso = lassoContext.lasso;
             cssParser.replaceUrls(
                 code,
 
                 // the replacer function
                 function(url, start, end, callback) {
-                    urlResolver(url, optimizerContext, function(err, url) {
+                    urlResolver(url, lassoContext, function(err, url) {
                         if (err || !url) {
                             return callback(err);
                         }
 
-                        optimizer.optimizeResource(url, {optimizerContext: optimizerContext}, function(err, optimizedResource) {
+                        lasso.optimizeResource(url, {lassoContext: lassoContext}, function(err, optimizedResource) {
                             if (err) {
                                 return callback(err);
                             }
