@@ -34,11 +34,11 @@ function defaultUrlResolver(url, lassoContext, callback) {
     callback(null, url);
 }
 
-module.exports = function (pageOptimizer, pluginConfig) {
+module.exports = function (lasso, pluginConfig) {
 
     var urlResolver = pluginConfig.urlResolver || defaultUrlResolver;
 
-    pageOptimizer.addTransform({
+    lasso.addTransform({
         contentType: 'css',
 
         name: module.id,

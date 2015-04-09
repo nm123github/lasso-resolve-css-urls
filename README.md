@@ -32,8 +32,8 @@ var config = {
     ...
 };
 
-var pageOptimizer = lasso.create(config);
-pageOptimizer.optimizePage(...);
+var myLasso = lasso.create(config);
+myLasso.optimizePage(...);
 ```
 
 # Custom URL Resolver
@@ -48,8 +48,8 @@ var config = {
     ...
 };
 
-var pageOptimizer = lasso.create(config);
-pageOptimizer.optimizePage(...);
+var myLasso = lasso.create(config);
+myLasso.optimizePage(...);
 ```
 # Using require.resolve
 Consider this CSS snippet:
