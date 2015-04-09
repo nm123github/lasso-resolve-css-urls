@@ -1,6 +1,6 @@
 {
     "name": "lasso-resolve-css-urls",
-    "description": "Transform for the Lasso.js to replace URLs in CSS files with optimized resources",
+    "description": "Transform for Lasso.js to replace URLs in CSS files with optimized resources",
     "keywords": [
         "lasso",
         "lasso-plugin",
