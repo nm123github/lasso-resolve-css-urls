@@ -1,7 +1,7 @@
 lasso-resolve-css-urls
 ==========================
 
-Transform for Lasso.js to replace URLs in CSS files with optimized resources
+Transform for Lasso.js to replace URLs in CSS files with URLs of bundled resources
 
 # Overview
 CSS files (which might be derived from LESS or SASS resources) often contain references to other assets.
@@ -33,7 +33,7 @@ var config = {
 };
 
 var myLasso = lasso.create(config);
-myLasso.optimizePage(...);
+myLasso.lassoPage(...);
 ```
 
 # Custom URL Resolver
@@ -49,7 +49,7 @@ var config = {
 };
 
 var myLasso = lasso.create(config);
-myLasso.optimizePage(...);
+myLasso.lassoPage(...);
 ```
 # Using require.resolve
 Consider this CSS snippet:

@@ -64,12 +64,12 @@ module.exports = function (lasso, pluginConfig) {
                             return callback(err);
                         }
 
-                        lasso.optimizeResource(url, {lassoContext: lassoContext}, function(err, optimizedResource) {
+                        lasso.lassoResource(url, {lassoContext: lassoContext}, function(err, bundledResource) {
                             if (err) {
                                 return callback(err);
                             }
 
-                            callback(null, optimizedResource && optimizedResource.url);
+                            callback(null, bundledResource && bundledResource.url);
                         });
                     });
                 },
