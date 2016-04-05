@@ -1,34 +1,50 @@
 var cssParser = require('raptor-css-parser');
-var raptorModulesUtil = require('raptor-modules/util');
-var resolver = require('raptor-modules/resolver');
 var nodePath = require('path');
 var REQUIRE_PREFIX = 'require:';
+var lassoResolveFrom = require('lasso-resolve-from');
 
 function defaultUrlResolver(url, lassoContext, callback) {
+
+    if (url.indexOf('//') !== -1) {
+        return callback(null, url);
+    }
+
+    var queryStart = url.indexOf('?');
+    var query;
+    var target = url;
+
+    if (queryStart !== -1) {
+        query = url.substring(queryStart + 1);
+        target = url.substring(0, queryStart);
+    }
+
     if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
-        url = nodePath.join(raptorModulesUtil.getProjectRootDir(url), url);
+        url = nodePath.join(lassoContext.getProjectRoot(), target);
     } else if (url.startsWith(REQUIRE_PREFIX)) {
-        url = url.substring(REQUIRE_PREFIX.length).trim();
+        target = target.substring(REQUIRE_PREFIX.length).trim();
 
         var from;
         if (lassoContext.dependency) {
             from = lassoContext.dependency.getDir(lassoContext);
         } else {
-            from = raptorModulesUtil.getProjectRootDir(url);
+            from = lassoContext.getProjectRoot();
         }
 
-        var query;
-        var pos = url.indexOf('?');
-        if (pos !== -1) {
-            query = url.substring(pos + 1);
-            url = url = url.substring(0, pos);
-        }
+        var resolved = lassoResolveFrom(from, target);
 
-        url = resolver.serverResolveRequire(url, from);
-
-        if (query) {
-            url += '?' + query;
+        if (resolved) {
+            url = resolved.path;
+        } else {
+            var err = new Error('Module not found: ' + url + ' (from: ' + from + ')');
+            err.target = url;
+            err.from = from;
+            err.code = 'MODULE_NOT_FOUND';
+            callback(err);
         }
+    }
+
+    if (query) {
+        url += '?' + query;
     }
 
     callback(null, url);
