@@ -35,11 +35,11 @@ function defaultUrlResolver(url, lassoContext, callback) {
         if (resolved) {
             url = resolved.path;
         } else {
-            var err = new Error('Module not found: ' + url + ' (from: ' + from + ')');
+            var err = new Error('Module not found: ' + target + ' (from: ' + from + ')');
             err.target = url;
             err.from = from;
             err.code = 'MODULE_NOT_FOUND';
-            callback(err);
+            return callback(err);
         }
     }
 
