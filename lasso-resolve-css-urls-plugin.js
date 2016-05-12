@@ -4,7 +4,6 @@ var REQUIRE_PREFIX = 'require:';
 var lassoResolveFrom = require('lasso-resolve-from');
 
 function defaultUrlResolver(url, lassoContext, callback) {
-
     if (url.indexOf('//') !== -1) {
         return callback(null, url);
     }
@@ -18,9 +17,9 @@ function defaultUrlResolver(url, lassoContext, callback) {
         target = url.substring(0, queryStart);
     }
 
-    if (url.charAt(0) === '/' && url.charAt(1) !== '/') {
-        url = nodePath.join(lassoContext.getProjectRoot(), target);
-    } else if (url.startsWith(REQUIRE_PREFIX)) {
+    if (target.charAt(0) === '/' && target.charAt(1) !== '/') {
+        target = nodePath.join(lassoContext.getProjectRoot(), target);
+    } else if (target.startsWith(REQUIRE_PREFIX)) {
         target = target.substring(REQUIRE_PREFIX.length).trim();
 
         var from;
@@ -33,10 +32,10 @@ function defaultUrlResolver(url, lassoContext, callback) {
         var resolved = lassoResolveFrom(from, target);
 
         if (resolved) {
-            url = resolved.path;
+            target = resolved.path;
         } else {
             var err = new Error('Module not found: ' + target + ' (from: ' + from + ')');
-            err.target = url;
+            err.target = target;
             err.from = from;
             err.code = 'MODULE_NOT_FOUND';
             return callback(err);
@@ -44,10 +43,11 @@ function defaultUrlResolver(url, lassoContext, callback) {
     }
 
     if (query) {
-        url += '?' + query;
+        // Add back the query string
+        target += '?' + query;
     }
 
-    callback(null, url);
+    callback(null, target);
 }
 
 module.exports = function (lasso, pluginConfig) {
