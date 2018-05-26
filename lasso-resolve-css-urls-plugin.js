@@ -75,6 +75,12 @@ module.exports = function (lasso, pluginConfig) {
 
                 // the replacer function
                 function(url, start, end, callback) {
+
+                    if(url.startsWith('#default')) {
+                        callback(null, url);
+                        return;
+                    }
+                    
                     urlResolver(url, lassoContext, function(err, url) {
                         if (err || !url) {
                             return callback(err);
